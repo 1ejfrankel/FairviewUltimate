@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Fairview Ultimate</title>
+    <title>Alumni - Fairview Ultimate</title>
     <style>
         * {
             margin: 0;
@@ -217,7 +217,8 @@
         .section h2 {
             color: #b91c1c;
             font-size: 2em;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            text-align: center;
             padding-bottom: 15px;
             border-bottom: 3px solid #b91c1c;
         }
@@ -227,31 +228,146 @@
             line-height: 1.8;
         }
 
-        .coach-grid {
+        .alumni-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
-        .coach-card {
-            background: #f9fafb;
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 4px solid #b91c1c;
+        .alumni-card {
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 2px solid #e5e7eb;
         }
 
-        .coach-card h3 {
+        .alumni-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #b91c1c;
+        }
+
+        .alumni-photo {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #e5e7eb 0%, #f3f4f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
             color: #b91c1c;
-            font-size: 1.3em;
-            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .coach-card .role {
-            color: #666;
+        .alumni-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .class-year {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(185, 28, 28, 0.95);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
             font-size: 0.9em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .alumni-info {
+            padding: 25px;
+        }
+
+        .alumni-name {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #b91c1c;
+            margin-bottom: 8px;
+        }
+
+        .alumni-college {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
             margin-bottom: 15px;
-            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .alumni-college::before {
+            content: "🎓";
+            font-size: 1.2em;
+        }
+
+        .alumni-team {
+            background: #fef2f2;
+            border-left: 3px solid #b91c1c;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .alumni-team strong {
+            color: #b91c1c;
+        }
+
+        .alumni-bio {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        .stats-section {
+            background: #fef2f2;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 700;
+            color: #b91c1c;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        .info-box {
+            background: #fef2f2;
+            border-left: 4px solid #b91c1c;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
         }
 
         .footer {
@@ -287,6 +403,16 @@
         .social-link:hover {
             background: rgba(255,255,255,0.2);
         }
+
+        @media (max-width: 768px) {
+            .alumni-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -299,7 +425,8 @@
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="alumni.html">About</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="program.html">Our Program</a></li>
                 <li class="dropdown">
                     <a href="teams.html">Teams</a>
@@ -322,70 +449,179 @@
 
     <div class="hero">
         <div class="hero-content">
-            <h1>Alumni</h1>
-            <p>Building champions on and off the field</p>
+            <h1>Alumni Spotlight</h1>
+            <p>Where our Knights have gone on to play</p>
         </div>
     </div>
 
     <div class="container">
         <div class="section">
-            <h2>Our History</h2>
-            <p><strong>EDIT THIS:</strong> Add your team's history here. When was the program founded? What are some major accomplishments? Any traditions or memorable moments?</p>
-            <p>Example: "Fairview Ultimate was founded in [YEAR] and has grown into one of Colorado's premier high school ultimate programs. Over the years, we've competed at state and national levels, developing not just skilled players but leaders and teammates..."</p>
-        </div>
+            <h2>Recent Graduates Playing in College</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 20px;">
+                We're incredibly proud of our alumni who continue their ultimate careers at the collegiate level. Below are some of our recent graduates and where they're competing now.
+            </p>
 
-        <div class="section">
-            <h2>Our Mission</h2>
-            <p><strong>EDIT THIS:</strong> Add your program's mission statement or philosophy.</p>
-            <p>Example: "At Fairview Ultimate, we are committed to developing well-rounded athletes who excel in ultimate frisbee while embodying the Spirit of the Game. We emphasize teamwork, sportsmanship, athletic excellence, and personal growth both on and off the field."</p>
-        </div>
-
-        <div class="section">
-            <h2>Core Values</h2>
-            <p><strong>EDIT THIS:</strong> List your program's core values.</p>
-            <p><strong>Spirit of the Game:</strong> We compete with integrity, respect, and fair play.</p>
-            <p><strong>Teamwork:</strong> Success comes from working together and supporting each other.</p>
-            <p><strong>Excellence:</strong> We strive for continuous improvement in all aspects of the game.</p>
-            <p><strong>Community:</strong> We build lasting friendships and connections through our shared love of ultimate.</p>
-        </div>
-
-        <div class="section">
-            <h2>Coaching Staff</h2>
-            <p><strong>EDIT THIS:</strong> Add information about your coaching staff below.</p>
-            
-            <div class="coach-grid">
-                <div class="coach-card">
-                    <h3>Coach Name 1</h3>
-                    <p class="role">Head Coach</p>
-                    <p><strong>Email:</strong> coach1@email.com</p>
-                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
+            <div class="alumni-grid">
+                <!-- EDIT THIS: Alumni Card 1 -->
+                <div class="alumni-card">
+                    <div class="alumni-photo">
+                        <!-- EDIT THIS: To add photo, replace the emoji div with:
+                             <img src="alumni-name.jpg" alt="Student Name">
+                        -->
+                        <div style="font-size: 5em;">🎓</div>
+                        <div class="class-year">Class of 2024</div>
+                    </div>
+                    <div class="alumni-info">
+                        <div class="alumni-name">Student Name</div>
+                        <div class="alumni-college">University of Colorado Boulder</div>
+                        <div class="alumni-team">
+                            <strong>Playing for:</strong> CU Mamabird (Women's)
+                        </div>
+                        <p class="alumni-bio">
+                            <strong>EDIT THIS:</strong> Add a short bio about their high school achievements and what they're doing in college. Example: "Team captain senior year, led the team to state finals. Now competing in the D1 women's division."
+                        </p>
+                    </div>
                 </div>
 
-                <div class="coach-card">
-                    <h3>Coach Name 2</h3>
-                    <p class="role">Assistant Coach</p>
-                    <p><strong>Email:</strong> coach2@email.com</p>
-                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
+                <!-- EDIT THIS: Alumni Card 2 -->
+                <div class="alumni-card">
+                    <div class="alumni-photo">
+                        <div style="font-size: 5em;">🎓</div>
+                        <div class="class-year">Class of 2024</div>
+                    </div>
+                    <div class="alumni-info">
+                        <div class="alumni-name">Student Name</div>
+                        <div class="alumni-college">Colorado State University</div>
+                        <div class="alumni-team">
+                            <strong>Playing for:</strong> CSU Blitz (Men's)
+                        </div>
+                        <p class="alumni-bio">
+                            <strong>EDIT THIS:</strong> Add alumni bio and achievements.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="coach-card">
-                    <h3>Coach Name 3</h3>
-                    <p class="role">Team Coordinator</p>
-                    <p><strong>Email:</strong> coach3@email.com</p>
-                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
+                <!-- EDIT THIS: Alumni Card 3 -->
+                <div class="alumni-card">
+                    <div class="alumni-photo">
+                        <div style="font-size: 5em;">🎓</div>
+                        <div class="class-year">Class of 2023</div>
+                    </div>
+                    <div class="alumni-info">
+                        <div class="alumni-name">Student Name</div>
+                        <div class="alumni-college">Stanford University</div>
+                        <div class="alumni-team">
+                            <strong>Playing for:</strong> Stanford Superfly (Women's)
+                        </div>
+                        <p class="alumni-bio">
+                            <strong>EDIT THIS:</strong> Add alumni bio and achievements.
+                        </p>
+                    </div>
                 </div>
+
+                <!-- EDIT THIS: Alumni Card 4 -->
+                <div class="alumni-card">
+                    <div class="alumni-photo">
+                        <div style="font-size: 5em;">🎓</div>
+                        <div class="class-year">Class of 2023</div>
+                    </div>
+                    <div class="alumni-info">
+                        <div class="alumni-name">Student Name</div>
+                        <div class="alumni-college">University of Oregon</div>
+                        <div class="alumni-team">
+                            <strong>Playing for:</strong> Oregon Ego (Men's)
+                        </div>
+                        <p class="alumni-bio">
+                            <strong>EDIT THIS:</strong> Add alumni bio and achievements.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- EDIT THIS: Alumni Card 5 -->
+                <div class="alumni-card">
+                    <div class="alumni-photo">
+                        <div style="font-size: 5em;">🎓</div>
+                        <div class="class-year">Class of 2022</div>
+                    </div>
+                    <div class="alumni-info">
+                        <div class="alumni-name">Student Name</div>
+                        <div class="alumni-college">University of Washington</div>
+                        <div class="alumni-team">
+                            <strong>Playing for:</strong> UW Element (Women's)
+                        </div>
+                        <p class="alumni-bio">
+                            <strong>EDIT THIS:</strong> Add alumni bio and achievements.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- EDIT THIS: Alumni Card 6 -->
+                <div class="alumni-card">
+                    <div class="alumni-photo">
+                        <div style="font-size: 5em;">🎓</div>
+                        <div class="class-year">Class of 2022</div>
+                    </div>
+                    <div class="alumni-info">
+                        <div class="alumni-name">Student Name</div>
+                        <div class="alumni-college">Carleton College</div>
+                        <div class="alumni-team">
+                            <strong>Playing for:</strong> CUT (Men's)
+                        </div>
+                        <p class="alumni-bio">
+                            <strong>EDIT THIS:</strong> Add alumni bio and achievements.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- EDIT THIS: To add more alumni, copy one of the alumni-card divs above and paste it here -->
+
             </div>
         </div>
 
         <div class="section">
-            <h2>Program Achievements</h2>
-            <p><strong>EDIT THIS:</strong> List major achievements, championships, tournament wins, or other notable accomplishments.</p>
-            <ul style="margin-left: 30px; line-height: 2;">
-                <li>State Championship - [Year]</li>
-                <li>Regional Tournament Winners - [Year]</li>
-                <li>National Qualifier - [Year]</li>
-                <li>Spirit of the Game Award - [Tournament Name, Year]</li>
-            </ul>
+            <h2>Program Impact</h2>
+            
+            <div class="stats-section">
+                <h3 style="text-align: center; color: #b91c1c; margin-bottom: 20px;">By the Numbers</h3>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-number">XX</span>
+                        <div class="stat-label">Alumni Playing in College</div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">XX</span>
+                        <div class="stat-label">Years of Program History</div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">XX</span>
+                        <div class="stat-label">State Championships</div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">XX</span>
+                        <div class="stat-label">National Appearances</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 40px;">
+                <strong>Are you a Fairview Ultimate alum?</strong><br>
+                We'd love to feature you! Contact us at <strong>EDIT THIS: coach@email.com</strong> with your college team info and a photo.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Alumni Achievements</h2>
+            <p><strong>EDIT THIS:</strong> Add notable achievements, awards, or milestones from your alumni.</p>
+            
+            <div style="margin-top: 25px;">
+                <h3 style="color: #b91c1c; margin-bottom: 15px;">Notable Accomplishments</h3>
+                <ul style="margin-left: 30px; line-height: 2.2;">
+                    <li><strong>EDIT:</strong> Alumni Name - National Championship with [College], 2023</li>
+                    <li><strong>EDIT:</strong> Alumni Name - All-Region Selection, 2022</li>
+                    <li><strong>EDIT:</strong> Alumni Name - Team USA U20 Development Team, 2024</li>
+                    <li><strong>EDIT:</strong> Add more achievements...</li>
+                </ul>
+            </div>
         </div>
     </div>
 
