@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Fairview Ultimate</title>
+    <title>Team Shop - Fairview Ultimate</title>
     <style>
         * {
             margin: 0;
@@ -227,31 +227,150 @@
             line-height: 1.8;
         }
 
-        .coach-grid {
+        .shop-cta {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .shop-cta h2 {
+            color: #b91c1c;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border: none;
+            padding: 0;
+        }
+
+        .shop-cta p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .shop-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 1.4em;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(185, 28, 28, 0.4);
+        }
+
+        .shop-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(185, 28, 28, 0.5);
+        }
+
+        .shop-button::after {
+            content: " →";
+            font-size: 1.2em;
+        }
+
+        .featured-items {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
+            margin-top: 40px;
+        }
+
+        .item-card {
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 2px solid #e5e7eb;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border-color: #b91c1c;
+        }
+
+        .item-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #e5e7eb 0%, #f3f4f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            color: #b91c1c;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-info {
+            padding: 20px;
+        }
+
+        .item-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .item-description {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .item-price {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #b91c1c;
+        }
+
+        .info-box {
+            background: #fef2f2;
+            border-left: 4px solid #b91c1c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
             margin-top: 30px;
         }
 
-        .coach-card {
+        .feature-box {
             background: #f9fafb;
             padding: 25px;
             border-radius: 10px;
             border-left: 4px solid #b91c1c;
         }
 
-        .coach-card h3 {
+        .feature-box h3 {
             color: #b91c1c;
-            font-size: 1.3em;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .coach-card .role {
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-            font-style: italic;
+        .feature-icon {
+            font-size: 1.5em;
         }
 
         .footer {
@@ -287,6 +406,21 @@
         .social-link:hover {
             background: rgba(255,255,255,0.2);
         }
+
+        @media (max-width: 768px) {
+            .shop-cta h2 {
+                font-size: 2em;
+            }
+            
+            .shop-button {
+                padding: 15px 35px;
+                font-size: 1.2em;
+            }
+            
+            .featured-items {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -299,7 +433,8 @@
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">About</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="program.html">Our Program</a></li>
                 <li class="dropdown">
                     <a href="teams.html">Teams</a>
@@ -323,69 +458,169 @@
     <div class="hero">
         <div class="hero-content">
             <h1>Team Shop</h1>
-            <p>Building champions on and off the field</p>
+            <p>Show your Fairview Ultimate pride with official team gear</p>
         </div>
     </div>
 
     <div class="container">
-        <div class="section">
-            <h2>Our History</h2>
-            <p><strong>EDIT THIS:</strong> Add your team's history here. When was the program founded? What are some major accomplishments? Any traditions or memorable moments?</p>
-            <p>Example: "Fairview Ultimate was founded in [YEAR] and has grown into one of Colorado's premier high school ultimate programs. Over the years, we've competed at state and national levels, developing not just skilled players but leaders and teammates..."</p>
-        </div>
-
-        <div class="section">
-            <h2>Our Mission</h2>
-            <p><strong>EDIT THIS:</strong> Add your program's mission statement or philosophy.</p>
-            <p>Example: "At Fairview Ultimate, we are committed to developing well-rounded athletes who excel in ultimate frisbee while embodying the Spirit of the Game. We emphasize teamwork, sportsmanship, athletic excellence, and personal growth both on and off the field."</p>
-        </div>
-
-        <div class="section">
-            <h2>Core Values</h2>
-            <p><strong>EDIT THIS:</strong> List your program's core values.</p>
-            <p><strong>Spirit of the Game:</strong> We compete with integrity, respect, and fair play.</p>
-            <p><strong>Teamwork:</strong> Success comes from working together and supporting each other.</p>
-            <p><strong>Excellence:</strong> We strive for continuous improvement in all aspects of the game.</p>
-            <p><strong>Community:</strong> We build lasting friendships and connections through our shared love of ultimate.</p>
-        </div>
-
-        <div class="section">
-            <h2>Coaching Staff</h2>
-            <p><strong>EDIT THIS:</strong> Add information about your coaching staff below.</p>
+        <div class="shop-cta">
+            <h2>🛍️ Visit Our Team Store</h2>
+            <p>Browse jerseys, warm-ups, practice gear, and more. All proceeds support the Fairview Ultimate program!</p>
             
-            <div class="coach-grid">
-                <div class="coach-card">
-                    <h3>Coach Name 1</h3>
-                    <p class="role">Head Coach</p>
-                    <p><strong>Email:</strong> coach1@email.com</p>
-                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
+            <!-- EDIT THIS: Add your Shopify store URL -->
+            <a href="https://your-shop-name.myshopify.com" target="_blank" class="shop-button">
+                Shop Now
+            </a>
+            
+            <div class="info-box" style="margin-top: 30px; text-align: left;">
+                <strong>📦 Important:</strong> Orders placed by <strong>EDIT THIS: [DATE]</strong> will arrive before the season starts. Allow 2-3 weeks for delivery.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Featured Items</h2>
+            <p><strong>EDIT THIS:</strong> Highlight some of your popular items below. These are just previews - the actual shop is on your Shopify store.</p>
+            
+            <div class="featured-items">
+                <div class="item-card">
+                    <div class="item-image">
+                        <!-- EDIT THIS: Add product image -->
+                        <!-- <img src="jersey.jpg" alt="Team Jersey"> -->
+                        👕
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Team Jersey</div>
+                        <div class="item-description">Official game jersey with Fairview colors and custom number</div>
+                        <div class="item-price">$XX</div>
+                    </div>
                 </div>
 
-                <div class="coach-card">
-                    <h3>Coach Name 2</h3>
-                    <p class="role">Assistant Coach</p>
-                    <p><strong>Email:</strong> coach2@email.com</p>
-                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
+                <div class="item-card">
+                    <div class="item-image">
+                        <!-- EDIT THIS: Add product image -->
+                        🧥
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Team Warm-Up Jacket</div>
+                        <div class="item-description">Zip-up jacket for pre-game warmups and cool days</div>
+                        <div class="item-price">$XX</div>
+                    </div>
                 </div>
 
-                <div class="coach-card">
-                    <h3>Coach Name 3</h3>
-                    <p class="role">Team Coordinator</p>
-                    <p><strong>Email:</strong> coach3@email.com</p>
-                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
+                <div class="item-card">
+                    <div class="item-image">
+                        <!-- EDIT THIS: Add product image -->
+                        🩳
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Practice Shorts</div>
+                        <div class="item-description">Lightweight athletic shorts for practice</div>
+                        <div class="item-price">$XX</div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-image">
+                        <!-- EDIT THIS: Add product image -->
+                        🧢
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Team Hat</div>
+                        <div class="item-description">Adjustable hat with Fairview Ultimate logo</div>
+                        <div class="item-price">$XX</div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-image">
+                        <!-- EDIT THIS: Add product image -->
+                        🥏
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Team Disc</div>
+                        <div class="item-description">Official Discraft Ultra-Star with team print</div>
+                        <div class="item-price">$XX</div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-image">
+                        <!-- EDIT THIS: Add product image -->
+                        🎒
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Team Bag</div>
+                        <div class="item-description">Durable backpack with Fairview Ultimate branding</div>
+                        <div class="item-price">$XX</div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="section">
-            <h2>Program Achievements</h2>
-            <p><strong>EDIT THIS:</strong> List major achievements, championships, tournament wins, or other notable accomplishments.</p>
-            <ul style="margin-left: 30px; line-height: 2;">
-                <li>State Championship - [Year]</li>
-                <li>Regional Tournament Winners - [Year]</li>
-                <li>National Qualifier - [Year]</li>
-                <li>Spirit of the Game Award - [Tournament Name, Year]</li>
-            </ul>
+            <h2>Why Shop With Us?</h2>
+            
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h3>
+                        <span class="feature-icon">💰</span>
+                        Support the Team
+                    </h3>
+                    <p>All proceeds go directly to supporting Fairview Ultimate, helping cover tournament fees, equipment, and travel costs.</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>
+                        <span class="feature-icon">✨</span>
+                        Quality Gear
+                    </h3>
+                    <p>We partner with top brands to bring you high-quality apparel and equipment that performs on the field.</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>
+                        <span class="feature-icon">🎨</span>
+                        Custom Designs
+                    </h3>
+                    <p>Exclusive Fairview Ultimate designs you won't find anywhere else, created by our team.</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>
+                        <span class="feature-icon">📦</span>
+                        Easy Ordering
+                    </h3>
+                    <p>Simple online ordering with delivery right to your door. Track your order every step of the way.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Ordering Information</h2>
+            
+            <div style="margin-top: 20px;">
+                <h3 style="color: #b91c1c; margin-bottom: 15px;">How to Order</h3>
+                <ol style="margin-left: 30px; line-height: 2.2;">
+                    <li>Click the "Shop Now" button above to visit our team store</li>
+                    <li>Browse items and add to your cart</li>
+                    <li>Complete checkout with your shipping information</li>
+                    <li>You'll receive a confirmation email with tracking info</li>
+                </ol>
+
+                <h3 style="color: #b91c1c; margin: 30px 0 15px;">Important Dates</h3>
+                <ul style="margin-left: 30px; line-height: 2.2;">
+                    <li><strong>EDIT THIS:</strong> Pre-season order deadline: [DATE]</li>
+                    <li><strong>EDIT THIS:</strong> Mid-season restock: [DATE]</li>
+                    <li><strong>EDIT THIS:</strong> Final order window: [DATE]</li>
+                </ul>
+
+                <h3 style="color: #b91c1c; margin: 30px 0 15px;">Questions?</h3>
+                <p><strong>EDIT THIS:</strong> Contact our team store coordinator at <strong>store@email.com</strong> or reach out to any coach.</p>
+            </div>
+
+            <div class="info-box" style="margin-top: 30px;">
+                <strong>💡 Pro Tip:</strong> Order early! Popular sizes and items can sell out quickly, especially before big tournaments.
+            </div>
         </div>
     </div>
 
