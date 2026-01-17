@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spaghetti Western Tournament - Fairview Ultimate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .logo span {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            padding: 20px 20px;
+            display: block;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links li a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #7f1d1d;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+
+        .dropdown-content a {
+            padding: 12px 20px;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown > a::after {
+            content: " ▾";
+            font-size: 0.8em;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+                flex-direction: column;
+                gap: 0;
+                display: none;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li a {
+                padding: 15px 20px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                background: #6b1a1a;
+                box-shadow: none;
+            }
+
+            .dropdown-content a {
+                padding-left: 40px;
+                font-size: 0.95em;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .tournament-emoji {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            color: #b91c1c;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #b91c1c;
+        }
+
+        .section h3 {
+            color: #7f1d1d;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: #f9fafb;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #b91c1c;
+        }
+
+        .info-card h4 {
+            color: #b91c1c;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #b91c1c;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .highlight-box {
+            background: #fef2f2;
+            border: 2px solid #b91c1c;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: #b91c1c;
+            margin-top: 0;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-tagline {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .footer-subtitle {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            transition: background 0.3s;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="fairview-logo.png" alt="Fairview">
+                <span>FHS Ultimate</span>
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                        <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="program.html">Our Program</a></li>
+                <li class="dropdown">
+                    <a href="teams.html">Teams</a>
+                    <div class="dropdown-content">
+                        <a href="team-spring-girl-matching.html">Spring Girl-Matching</a>
+                        <a href="team-spring-a.html">Spring A</a>
+                        <a href="team-spring-b.html">Spring B</a>
+                        <a href="team-fall-a.html">Fall A</a>
+                        <a href="team-fall-b.html">Fall B</a>
+                        <a href="team-fall-open.html">Fall Open</a>
+                    </div>
+                </li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="spaghetti-western.html">Spaghetti Western</a></li>
+                <li><a href="shop.html">Shop</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <span class="tournament-emoji">🌵🥏🤠</span>
+            <h1>Spaghetti Western Tournament</h1>
+            <p>Our premier overnight tournament experience</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Tournament Overview</h2>
+            <p><strong>EDIT THIS:</strong> Add details about when and where Spaghetti Western takes place, what makes it special, and why it's an important part of your season.</p>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>📅 Date & Location</h4>
+                    <p><strong>EDIT THIS:</strong> Add specific dates and location</p>
+                    <p>Example: March 15-17, 2024<br>Phoenix, Arizona</p>
+                </div>
+                <div class="info-card">
+                    <h4>🏨 Accommodations</h4>
+                    <p><strong>EDIT THIS:</strong> Add hotel/lodging information</p>
+                    <p>Example: Team hotel with group rates available</p>
+                </div>
+                <div class="info-card">
+                    <h4>✈️ Travel</h4>
+                    <p><strong>EDIT THIS:</strong> Add travel logistics</p>
+                    <p>Example: Fly out Friday morning, return Sunday evening</p>
+                </div>
+                <div class="info-card">
+                    <h4>💰 Cost</h4>
+                    <p><strong>EDIT THIS:</strong> Add cost breakdown</p>
+                    <p>Example: $XXX per player (includes flight, hotel, meals)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What to Pack</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>🥏 Ultimate Gear</h4>
+                    <ul class="checklist">
+                        <li>2-3 team jerseys</li>
+                        <li>Cleats (turf and/or grass)</li>
+                        <li>Athletic shorts/pants</li>
+                        <li>Extra socks</li>
+                        <li>Water bottle</li>
+                        <li>Sunscreen & hat</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>🎒 Personal Items</h4>
+                    <ul class="checklist">
+                        <li>Toiletries</li>
+                        <li>Pajamas</li>
+                        <li>Casual clothes</li>
+                        <li>Phone charger</li>
+                        <li>Any medications</li>
+                        <li>Spending money</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>🏥 Health & Safety</h4>
+                    <ul class="checklist">
+                        <li>Medical form (required)</li>
+                        <li>Insurance card copy</li>
+                        <li>Prescription medications</li>
+                        <li>First aid supplies</li>
+                        <li>Allergy medications if needed</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>📚 Optional Items</h4>
+                    <ul class="checklist">
+                        <li>Books or games for downtime</li>
+                        <li>Homework (if needed)</li>
+                        <li>Camera</li>
+                        <li>Snacks</li>
+                        <li>Pillow for flight</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Schedule & Format</h2>
+            <p><strong>EDIT THIS:</strong> Add the tournament format and schedule details.</p>
+            
+            <h3>Friday</h3>
+            <p><strong>EDIT THIS:</strong> Add Friday schedule (travel, check-in, etc.)</p>
+            
+            <h3>Saturday</h3>
+            <p><strong>EDIT THIS:</strong> Add Saturday schedule (pool play, games, team dinner, etc.)</p>
+            
+            <h3>Sunday</h3>
+            <p><strong>EDIT THIS:</strong> Add Sunday schedule (bracket play, departure, etc.)</p>
+        </div>
+
+        <div class="highlight-box">
+            <h3>⚠️ Important Reminders</h3>
+            <ul class="checklist">
+                <li><strong>EDIT THIS:</strong> Add specific reminders and rules for the trip</li>
+                <li>Example: All players must stay at team hotel</li>
+                <li>Example: Curfew is 10:00 PM each night</li>
+                <li>Example: Team meals are provided - list any not included</li>
+                <li>Example: Parents are welcome to attend games</li>
+                <li>Example: Behavior expectations during travel</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Registration & Payment</h2>
+            <p><strong>EDIT THIS:</strong> Add information about how to sign up and pay for the tournament.</p>
+            <p>Example: Registration deadline is [DATE]. Payment is due by [DATE]. Contact [COACH NAME] at [EMAIL] with any questions.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p class="footer-tagline">🥏 Go Knights! 🥏</p>
+        <p class="footer-subtitle">Fairview High School Ultimate Frisbee Team</p>
+        <a href="https://www.instagram.com/fhs.ultimate/" target="_blank" class="social-link">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            <span>Follow us @fhs.ultimate</span>
+        </a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+
+        // Mobile dropdown functionality
+        document.addEventListener("DOMContentLoaded", function() {
+            const dropdown = document.querySelector(".dropdown > a");
+            if (dropdown && window.innerWidth <= 768) {
+                dropdown.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    const dropdownContent = this.nextElementSibling;
+                    dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+                });
+            }
+        });
+        
+    </script>
+</body>
+</html>
