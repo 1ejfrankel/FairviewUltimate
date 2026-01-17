@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Fairview Ultimate</title>
+    <title>Schedule - Fairview Ultimate</title>
     <style>
         * {
             margin: 0;
@@ -207,7 +207,7 @@
         }
 
         .section {
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             background: white;
             padding: 40px;
             border-radius: 10px;
@@ -227,31 +227,88 @@
             line-height: 1.8;
         }
 
-        .coach-grid {
+        .calendar-container {
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .calendar-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        .quick-schedule {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 20px;
             margin-top: 30px;
         }
 
-        .coach-card {
+        .event-card {
             background: #f9fafb;
-            padding: 25px;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: 8px;
             border-left: 4px solid #b91c1c;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .coach-card h3 {
+        .event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .event-date {
             color: #b91c1c;
-            font-size: 1.3em;
-            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 8px;
         }
 
-        .coach-card .role {
+        .event-title {
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .event-details {
             color: #666;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-            font-style: italic;
+            font-size: 0.95em;
+        }
+
+        .event-type {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .event-type.practice {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .event-type.game {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .event-type.tournament {
+            background: #fecaca;
+            color: #991b1b;
+        }
+
+        .info-box {
+            background: #fef2f2;
+            border-left: 4px solid #b91c1c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
         }
 
         .footer {
@@ -287,6 +344,12 @@
         .social-link:hover {
             background: rgba(255,255,255,0.2);
         }
+
+        @media (max-width: 768px) {
+            .calendar-container iframe {
+                height: 500px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -299,7 +362,8 @@
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="schedule.html">About</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="program.html">Our Program</a></li>
                 <li class="dropdown">
                     <a href="teams.html">Teams</a>
@@ -322,70 +386,93 @@
 
     <div class="hero">
         <div class="hero-content">
-            <h1>Schedule</h1>
-            <p>Building champions on and off the field</p>
+            <h1>Team Schedule</h1>
+            <p>Practices, games, and tournaments for the 2024-2025 season</p>
         </div>
     </div>
 
     <div class="container">
         <div class="section">
-            <h2>Our History</h2>
-            <p><strong>EDIT THIS:</strong> Add your team's history here. When was the program founded? What are some major accomplishments? Any traditions or memorable moments?</p>
-            <p>Example: "Fairview Ultimate was founded in [YEAR] and has grown into one of Colorado's premier high school ultimate programs. Over the years, we've competed at state and national levels, developing not just skilled players but leaders and teammates..."</p>
-        </div>
-
-        <div class="section">
-            <h2>Our Mission</h2>
-            <p><strong>EDIT THIS:</strong> Add your program's mission statement or philosophy.</p>
-            <p>Example: "At Fairview Ultimate, we are committed to developing well-rounded athletes who excel in ultimate frisbee while embodying the Spirit of the Game. We emphasize teamwork, sportsmanship, athletic excellence, and personal growth both on and off the field."</p>
-        </div>
-
-        <div class="section">
-            <h2>Core Values</h2>
-            <p><strong>EDIT THIS:</strong> List your program's core values.</p>
-            <p><strong>Spirit of the Game:</strong> We compete with integrity, respect, and fair play.</p>
-            <p><strong>Teamwork:</strong> Success comes from working together and supporting each other.</p>
-            <p><strong>Excellence:</strong> We strive for continuous improvement in all aspects of the game.</p>
-            <p><strong>Community:</strong> We build lasting friendships and connections through our shared love of ultimate.</p>
-        </div>
-
-        <div class="section">
-            <h2>Coaching Staff</h2>
-            <p><strong>EDIT THIS:</strong> Add information about your coaching staff below.</p>
+            <h2>📅 Full Season Calendar</h2>
+            <p>View our complete schedule below. The calendar automatically updates with practices, games, and tournaments.</p>
             
-            <div class="coach-grid">
-                <div class="coach-card">
-                    <h3>Coach Name 1</h3>
-                    <p class="role">Head Coach</p>
-                    <p><strong>Email:</strong> coach1@email.com</p>
-                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
-                </div>
+            <div class="info-box">
+                <strong>🔔 Stay Updated:</strong> Subscribe to this calendar to get automatic updates on your phone or computer! Click the "+ Google Calendar" button in the bottom right of the calendar below.
+            </div>
 
-                <div class="coach-card">
-                    <h3>Coach Name 2</h3>
-                    <p class="role">Assistant Coach</p>
-                    <p><strong>Email:</strong> coach2@email.com</p>
-                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
-                </div>
-
-                <div class="coach-card">
-                    <h3>Coach Name 3</h3>
-                    <p class="role">Team Coordinator</p>
-                    <p><strong>Email:</strong> coach3@email.com</p>
-                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
-                </div>
+            <div class="calendar-container">
+                <iframe src="https://calendar.google.com/calendar/embed?src=fairviewultimatefrisbee%40gmail.com&ctz=America%2FDenver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
 
         <div class="section">
-            <h2>Program Achievements</h2>
-            <p><strong>EDIT THIS:</strong> List major achievements, championships, tournament wins, or other notable accomplishments.</p>
-            <ul style="margin-left: 30px; line-height: 2;">
-                <li>State Championship - [Year]</li>
-                <li>Regional Tournament Winners - [Year]</li>
-                <li>National Qualifier - [Year]</li>
-                <li>Spirit of the Game Award - [Tournament Name, Year]</li>
-            </ul>
+            <h2>📌 Upcoming Events</h2>
+            <p><strong>EDIT THIS:</strong> Add your next few upcoming events below. These are manually added for quick reference.</p>
+            
+            <div class="quick-schedule">
+                <div class="event-card">
+                    <div class="event-date">Monday, January 20</div>
+                    <div class="event-title">Team Practice</div>
+                    <div class="event-details">3:30 PM - 5:30 PM<br>Main Field</div>
+                    <span class="event-type practice">Practice</span>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-date">Saturday, January 25</div>
+                    <div class="event-title">vs. Boulder High</div>
+                    <div class="event-details">10:00 AM<br>Home Field</div>
+                    <span class="event-type game">Game</span>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-date">February 1-2</div>
+                    <div class="event-title">Winter Invitational</div>
+                    <div class="event-details">All Day<br>Denver, CO</div>
+                    <span class="event-type tournament">Tournament</span>
+                </div>
+
+                <!-- EDIT THIS: Copy the event-card structure above to add more events -->
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏆 Season Overview</h2>
+            
+            <div style="margin-top: 20px;">
+                <h3 style="color: #b91c1c; margin-bottom: 10px;">Spring Season (March - May)</h3>
+                <p><strong>EDIT THIS:</strong> Add spring season details</p>
+                <ul style="margin-left: 30px; line-height: 2; margin-top: 10px;">
+                    <li>Regular season games: Every Saturday</li>
+                    <li>Practice: Monday & Wednesday, 3:30-5:30 PM</li>
+                    <li>Key tournaments: List tournament names and dates</li>
+                    <li>State Championship: Add date</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h3 style="color: #b91c1c; margin-bottom: 10px;">Fall Season (August - October)</h3>
+                <p><strong>EDIT THIS:</strong> Add fall season details</p>
+                <ul style="margin-left: 30px; line-height: 2; margin-top: 10px;">
+                    <li>Regular season games: Every Saturday</li>
+                    <li>Practice: Monday & Wednesday, 3:30-5:30 PM</li>
+                    <li>Key tournaments: List tournament names and dates</li>
+                    <li>Regional Championship: Add date</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>ℹ️ Important Information</h2>
+            <div style="margin-top: 20px;">
+                <p><strong>Practice Attendance:</strong> <em>EDIT THIS:</em> Add your attendance policy</p>
+                <p><strong>Game Day Arrival:</strong> <em>EDIT THIS:</em> When should players arrive before games?</p>
+                <p><strong>Weather Cancellations:</strong> <em>EDIT THIS:</em> How will you notify about cancellations?</p>
+                <p><strong>Tournament Info:</strong> <em>EDIT THIS:</em> What should players know about tournaments?</p>
+            </div>
+
+            <div class="info-box" style="margin-top: 25px;">
+                <strong>📧 Schedule Questions?</strong> Contact the coaching staff at <strong>EDIT THIS: coach@email.com</strong>
+            </div>
         </div>
     </div>
 
