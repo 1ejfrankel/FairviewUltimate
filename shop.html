@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Fairview Ultimate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .logo span {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            padding: 20px 20px;
+            display: block;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links li a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #7f1d1d;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+
+        .dropdown-content a {
+            padding: 12px 20px;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown > a::after {
+            content: " ▾";
+            font-size: 0.8em;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+                flex-direction: column;
+                gap: 0;
+                display: none;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li a {
+                padding: 15px 20px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                background: #6b1a1a;
+                box-shadow: none;
+            }
+
+            .dropdown-content a {
+                padding-left: 40px;
+                font-size: 0.95em;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            color: #b91c1c;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #b91c1c;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .coach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .coach-card {
+            background: #f9fafb;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #b91c1c;
+        }
+
+        .coach-card h3 {
+            color: #b91c1c;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .coach-card .role {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-tagline {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .footer-subtitle {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            transition: background 0.3s;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="fairview-logo.png" alt="Fairview">
+                <span>FHS Ultimate</span>
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">About</a></li>
+                <li><a href="program.html">Our Program</a></li>
+                <li class="dropdown">
+                    <a href="teams.html">Teams</a>
+                    <div class="dropdown-content">
+                        <a href="team-spring-girl-matching.html">Spring Girl-Matching</a>
+                        <a href="team-spring-a.html">Spring A</a>
+                        <a href="team-spring-b.html">Spring B</a>
+                        <a href="team-fall-a.html">Fall A</a>
+                        <a href="team-fall-b.html">Fall B</a>
+                        <a href="team-fall-open.html">Fall Open</a>
+                    </div>
+                </li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="spaghetti-western.html">Spaghetti Western</a></li>
+                <li><a href="alumni.html">Alumni</a></li>
+                <li><a href="shop.html">Shop</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Team Shop</h1>
+            <p>Building champions on and off the field</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Our History</h2>
+            <p><strong>EDIT THIS:</strong> Add your team's history here. When was the program founded? What are some major accomplishments? Any traditions or memorable moments?</p>
+            <p>Example: "Fairview Ultimate was founded in [YEAR] and has grown into one of Colorado's premier high school ultimate programs. Over the years, we've competed at state and national levels, developing not just skilled players but leaders and teammates..."</p>
+        </div>
+
+        <div class="section">
+            <h2>Our Mission</h2>
+            <p><strong>EDIT THIS:</strong> Add your program's mission statement or philosophy.</p>
+            <p>Example: "At Fairview Ultimate, we are committed to developing well-rounded athletes who excel in ultimate frisbee while embodying the Spirit of the Game. We emphasize teamwork, sportsmanship, athletic excellence, and personal growth both on and off the field."</p>
+        </div>
+
+        <div class="section">
+            <h2>Core Values</h2>
+            <p><strong>EDIT THIS:</strong> List your program's core values.</p>
+            <p><strong>Spirit of the Game:</strong> We compete with integrity, respect, and fair play.</p>
+            <p><strong>Teamwork:</strong> Success comes from working together and supporting each other.</p>
+            <p><strong>Excellence:</strong> We strive for continuous improvement in all aspects of the game.</p>
+            <p><strong>Community:</strong> We build lasting friendships and connections through our shared love of ultimate.</p>
+        </div>
+
+        <div class="section">
+            <h2>Coaching Staff</h2>
+            <p><strong>EDIT THIS:</strong> Add information about your coaching staff below.</p>
+            
+            <div class="coach-grid">
+                <div class="coach-card">
+                    <h3>Coach Name 1</h3>
+                    <p class="role">Head Coach</p>
+                    <p><strong>Email:</strong> coach1@email.com</p>
+                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
+                </div>
+
+                <div class="coach-card">
+                    <h3>Coach Name 2</h3>
+                    <p class="role">Assistant Coach</p>
+                    <p><strong>Email:</strong> coach2@email.com</p>
+                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
+                </div>
+
+                <div class="coach-card">
+                    <h3>Coach Name 3</h3>
+                    <p class="role">Team Coordinator</p>
+                    <p><strong>Email:</strong> coach3@email.com</p>
+                    <p>Add coach bio here. Include playing experience, coaching philosophy, years with the program, etc.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Program Achievements</h2>
+            <p><strong>EDIT THIS:</strong> List major achievements, championships, tournament wins, or other notable accomplishments.</p>
+            <ul style="margin-left: 30px; line-height: 2;">
+                <li>State Championship - [Year]</li>
+                <li>Regional Tournament Winners - [Year]</li>
+                <li>National Qualifier - [Year]</li>
+                <li>Spirit of the Game Award - [Tournament Name, Year]</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p class="footer-tagline">🥏 Go Knights! 🥏</p>
+        <p class="footer-subtitle">Fairview High School Ultimate Frisbee Team</p>
+        <a href="https://www.instagram.com/fhs.ultimate/" target="_blank" class="social-link">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            <span>Follow us @fhs.ultimate</span>
+        </a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Mobile dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.dropdown > a');
+            if (dropdown && window.innerWidth <= 768) {
+                dropdown.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const dropdownContent = this.nextElementSibling;
+                    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
