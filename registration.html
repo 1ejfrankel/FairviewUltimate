@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fairview High School Ultimate Frisbee</title>
+    <title>Registration - Fairview Ultimate</title>
     <style>
         * {
             margin: 0;
@@ -166,7 +166,7 @@
             background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
             color: white;
             text-align: center;
-            padding: 100px 20px 80px;
+            padding: 80px 20px 60px;
             position: relative;
             overflow: hidden;
         }
@@ -189,32 +189,15 @@
             margin: 0 auto;
         }
 
-        .hero img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            margin-bottom: 30px;
-        }
-
         .hero h1 {
-            font-size: 3.5em;
+            font-size: 3em;
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .hero h2 {
-            font-size: 2.2em;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-
         .hero p {
-            font-size: 1.4em;
+            font-size: 1.3em;
             opacity: 0.95;
-            max-width: 700px;
-            margin: 0 auto;
         }
 
         .container {
@@ -233,116 +216,67 @@
 
         .section h2 {
             color: #b91c1c;
-            font-size: 2.5em;
-            margin-bottom: 25px;
-            text-align: center;
-            padding-bottom: 20px;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 3px solid #b91c1c;
         }
 
         .section p {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.8;
-            font-size: 1.1em;
         }
 
-        .welcome-section {
-            text-align: center;
+        .form-container {
+            margin-top: 30px;
         }
 
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .photo-card {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .photo-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-
-        .photo-card img {
+        .form-container iframe {
             width: 100%;
-            height: 400px;
-            object-fit: cover;
+            height: 1200px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .payment-card {
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #e5e7eb;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
             display: block;
         }
 
-        .photo-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 1.2em;
+        .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #b91c1c;
         }
 
-        .photo-placeholder .icon {
-            font-size: 4em;
-            margin-bottom: 15px;
+        .payment-card h3 {
             color: #b91c1c;
+            font-size: 1.5em;
+            margin-bottom: 15px;
         }
 
-        .cta-section {
-            text-align: center;
-            background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
-            padding: 50px 40px;
-            border-radius: 10px;
-            margin: 40px 0;
+        .payment-card p {
+            color: #666;
+            margin-bottom: 0;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
-            color: white;
-            padding: 18px 45px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 1.3em;
-            font-weight: 600;
-            margin: 15px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(185, 28, 28, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(185, 28, 28, 0.4);
-        }
-
-        .gallery-section {
-            text-align: center;
-        }
-
-        .gallery-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
-            color: white;
-            padding: 20px 40px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: 600;
-            margin: 20px 0;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(185, 28, 28, 0.3);
-        }
-
-        .gallery-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(185, 28, 28, 0.4);
+        .payment-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
         }
 
         .info-box {
@@ -351,6 +285,27 @@
             padding: 20px;
             margin: 20px 0;
             border-radius: 5px;
+        }
+
+        .requirements-list {
+            background: #f9fafb;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .requirements-list h3 {
+            color: #b91c1c;
+            margin-bottom: 15px;
+        }
+
+        .requirements-list ul {
+            margin-left: 25px;
+            line-height: 2;
+        }
+
+        .requirements-list li {
+            margin-bottom: 8px;
         }
 
         .footer {
@@ -385,20 +340,6 @@
 
         .social-link:hover {
             background: rgba(255,255,255,0.2);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5em;
-            }
-            
-            .hero h2 {
-                font-size: 1.8em;
-            }
-            
-            .photo-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -436,66 +377,79 @@
 
     <div class="hero">
         <div class="hero-content">
-            <img src="fairview-logo.png" alt="Fairview High School">
-            <h1>Fairview High School</h1>
-            <h2>Ultimate Frisbee</h2>
-            <p>Building champions through teamwork, spirit, and the love of the game</p>
+            <h1>Player Registration</h1>
+            <p>Complete your registration to join the team</p>
         </div>
     </div>
 
     <div class="container">
-        <div class="section welcome-section">
-            <h2>Welcome to Fairview Ultimate</h2>
-            <p><strong>EDIT THIS:</strong> Add your welcome message here. Talk about what makes Fairview Ultimate special, your program's values, and what new and returning players can expect.</p>
-            <p>Example: "Welcome to Fairview High School Ultimate Frisbee! Whether you're a seasoned player or brand new to the sport, we're excited to have you join our community. Our program is built on the foundation of Spirit of the Game, competitive excellence, and lasting friendships. We compete at the highest levels while maintaining the camaraderie and sportsmanship that make ultimate special."</p>
+        <div class="section">
+            <h2>Registration Requirements</h2>
+            
+            <div class="requirements-list">
+                <h3>Before You Register:</h3>
+                <ul>
+                    <li><strong>USA Ultimate Membership:</strong> All players must have an active USA Ultimate youth membership</li>
+                    <li><strong>Medical Form:</strong> Completed medical/physical form signed by a physician</li>
+                    <li><strong>Parent/Guardian Consent:</strong> For players under 18</li>
+                    <li><strong>Emergency Contact Information:</strong> Up-to-date emergency contacts</li>
+                </ul>
+            </div>
+
+            <p>Please complete all fields in the registration form below. Both the medical form and USA Ultimate membership number are <strong>required</strong> to participate in practices and games.</p>
         </div>
 
         <div class="section">
-            <h2>Our Team in Action</h2>
-            <p style="text-align: center;"><strong>EDIT THIS:</strong> Upload two awesome photos below by replacing the placeholder images.</p>
+            <h2>Registration Form</h2>
             
-            <div class="photo-grid">
-                <div class="photo-card">
-                    <!-- EDIT THIS: Replace this placeholder with your first photo -->
-                    <!-- To add a photo: Replace the entire <div class="photo-placeholder">...</div> section below with: -->
-                    <!-- <img src="your-photo-1.jpg" alt="Description of photo"> -->
-                    <div class="photo-placeholder">
-                        <div class="icon">📸</div>
-                        <div>Add Your First Team Photo</div>
-                        <div style="font-size: 0.9em; margin-top: 10px; opacity: 0.8;">Replace this placeholder in the code</div>
-                    </div>
-                </div>
-
-                <div class="photo-card">
-                    <!-- EDIT THIS: Replace this placeholder with your second photo -->
-                    <!-- To add a photo: Replace the entire <div class="photo-placeholder">...</div> section below with: -->
-                    <!-- <img src="your-photo-2.jpg" alt="Description of photo"> -->
-                    <div class="photo-placeholder">
-                        <div class="icon">📸</div>
-                        <div>Add Your Second Team Photo</div>
-                        <div style="font-size: 0.9em; margin-top: 10px; opacity: 0.8;">Replace this placeholder in the code</div>
-                    </div>
-                </div>
+            <div class="form-container">
+                <!-- EDIT THIS: Replace with your actual Google Form embed URL -->
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc6YvF8xZP-YOUR-FORM-ID-HERE/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+            
+            <div class="info-box">
+                <strong>📝 Note:</strong> If you need to edit your registration after submitting, look for the confirmation email Google Forms sends you, or contact the coaching staff at <strong>EDIT THIS: coach@email.com</strong>
             </div>
         </div>
 
-        <div class="cta-section">
-            <h2 style="color: #b91c1c; margin-bottom: 20px; border: none; padding: 0;">Ready to Join?</h2>
-            <p style="font-size: 1.2em; margin-bottom: 30px;">Registration is open for the upcoming season!</p>
-            <a href="registration.html" class="cta-button">Register Now →</a>
+        <div class="section">
+            <h2>Team Fees & Payments</h2>
+            <p>After completing your registration, please submit your payment using one of the options below.</p>
+            
+            <div class="payment-grid">
+                <a href="https://bvsd.revtrak.net/" target="_blank" class="payment-card">
+                    <span class="payment-icon">💳</span>
+                    <h3>Season Dues</h3>
+                    <p>Pay your season dues securely through RevTrak. Link goes directly to the BVSD payment portal.</p>
+                </a>
+                
+                <a href="https://venmo.com/u/ejfrankel" target="_blank" class="payment-card">
+                    <span class="payment-icon">🚐</span>
+                    <h3>Coach Expenses</h3>
+                    <p>Contribute to coaching expenses and team travel costs via Venmo (@ejfrankel).</p>
+                </a>
+            </div>
+
+            <div class="info-box" style="margin-top: 30px;">
+                <strong>💰 Payment Information:</strong><br>
+                <strong>EDIT THIS:</strong> Add details about payment amounts, deadlines, and what fees cover.<br>
+                Example: "Season dues are $XXX and cover tournament fees, uniforms, and equipment. Payment is due by [DATE]. Financial assistance is available - please contact the coaching staff."
+            </div>
         </div>
 
-        <div class="section gallery-section">
-            <h2>Team Photo Gallery</h2>
-            <p>📸 View and share your favorite moments from practice, games, and team events!</p>
-            
-            <a href="https://photos.app.goo.gl/AcaGH2Swn3HFgaC19" target="_blank" class="gallery-link">
-                📷 View Team Photos
-            </a>
-            
-            <div class="info-box" style="text-align: left; max-width: 600px; margin: 30px auto 0;">
-                <strong>💡 Want to add photos?</strong><br>
-                Team members can upload photos directly to the Google Photos album. Make sure you have access to upload by contacting the team organizer.
+        <div class="section">
+            <h2>What Happens Next?</h2>
+            <p><strong>EDIT THIS:</strong> Add information about what happens after registration.</p>
+            <ol style="margin-left: 30px; line-height: 2; margin-top: 15px;">
+                <li>Complete the registration form above</li>
+                <li>Submit your payment through RevTrak</li>
+                <li>Wait for a confirmation email from the coaching staff</li>
+                <li>Attend the first practice (check the schedule for dates/times)</li>
+                <li>Bring your completed medical form to the first practice</li>
+            </ol>
+
+            <div class="info-box" style="margin-top: 25px;">
+                <strong>❓ Questions?</strong> Contact us at <strong>EDIT THIS: coach@email.com</strong> or reach out on Instagram <a href="https://www.instagram.com/fhs.ultimate/" target="_blank" style="color: #b91c1c;">@fhs.ultimate</a>
             </div>
         </div>
     </div>
