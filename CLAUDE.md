@@ -104,7 +104,7 @@ Navigation is dynamically loaded via `components.js`. Current active navigation:
 ### Partner Organizations
 - USA Ultimate (usaultimate.org)
 - Altitude Youth Ultimate (altitudeyouthultimate.org)
-- Grass Roots Ultimate (grassrootsultimate.com)
+- Grass Roots Ultimate (gru.org)
 
 ## Making Changes
 

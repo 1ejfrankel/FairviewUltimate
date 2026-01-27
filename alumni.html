@@ -6,26 +6,12 @@
     <title>Alumni - Fairview Ultimate</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-.alumni-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
 .alumni-card {
             background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s;
             border: 2px solid #e5e7eb;
-        }
-
-.alumni-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            border-color: #b91c1c;
         }
 
 .alumni-photo {
@@ -112,13 +98,6 @@
             margin-top: 40px;
         }
 
-.stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
 .stat-box {
             text-align: center;
             padding: 20px;
@@ -141,11 +120,11 @@
         }
 
 @media (max-width: 768px) {
-            .alumni-grid {
+            .grid-xlarge {
                 grid-template-columns: 1fr;
             }
-            
-            .stats-grid {
+
+            .grid-small {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -168,9 +147,9 @@
                 We're incredibly proud of our alumni who continue their ultimate careers at the collegiate level. Below are some of our recent graduates and where they're competing now.
             </p>
 
-            <div class="alumni-grid">
+            <div class="grid-xlarge" style="margin-top: 40px;">
                 <!-- EDIT THIS: Alumni Card 1 -->
-                <div class="alumni-card">
+                <div class="alumni-card interactive-card">
                     <div class="alumni-photo">
                         <!-- EDIT THIS: To add photo, replace the emoji div with:
                              <img src="alumni-name.jpg" alt="Student Name">
@@ -191,7 +170,7 @@
                 </div>
 
                 <!-- EDIT THIS: Alumni Card 2 -->
-                <div class="alumni-card">
+                <div class="alumni-card interactive-card">
                     <div class="alumni-photo">
                         <div style="font-size: 5em;">🎓</div>
                         <div class="class-year">Class of 2024</div>
@@ -209,7 +188,7 @@
                 </div>
 
                 <!-- EDIT THIS: Alumni Card 3 -->
-                <div class="alumni-card">
+                <div class="alumni-card interactive-card">
                     <div class="alumni-photo">
                         <div style="font-size: 5em;">🎓</div>
                         <div class="class-year">Class of 2023</div>
@@ -227,7 +206,7 @@
                 </div>
 
                 <!-- EDIT THIS: Alumni Card 4 -->
-                <div class="alumni-card">
+                <div class="alumni-card interactive-card">
                     <div class="alumni-photo">
                         <div style="font-size: 5em;">🎓</div>
                         <div class="class-year">Class of 2023</div>
@@ -245,7 +224,7 @@
                 </div>
 
                 <!-- EDIT THIS: Alumni Card 5 -->
-                <div class="alumni-card">
+                <div class="alumni-card interactive-card">
                     <div class="alumni-photo">
                         <div style="font-size: 5em;">🎓</div>
                         <div class="class-year">Class of 2022</div>
@@ -263,7 +242,7 @@
                 </div>
 
                 <!-- EDIT THIS: Alumni Card 6 -->
-                <div class="alumni-card">
+                <div class="alumni-card interactive-card">
                     <div class="alumni-photo">
                         <div style="font-size: 5em;">🎓</div>
                         <div class="class-year">Class of 2022</div>
@@ -290,7 +269,7 @@
             
             <div class="stats-section">
                 <h3 style="text-align: center; color: #b91c1c; margin-bottom: 20px;">By the Numbers</h3>
-                <div class="stats-grid">
+                <div class="grid-small" style="margin-top: 20px;">
                     <div class="stat-box">
                         <span class="stat-number">XX</span>
                         <div class="stat-label">Alumni Playing in College</div>
@@ -332,16 +311,7 @@
         </div>
     </div>
 
-    <div class="footer">
-        <p class="footer-tagline">🥏 Go Knights! 🥏</p>
-        <p class="footer-subtitle">Fairview High School Ultimate Frisbee Team</p>
-        <a href="https://www.instagram.com/fhs.ultimate/" target="_blank" class="social-link">
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-            <span>Follow us @fhs.ultimate</span>
-        </a>
-    </div>
+    <div id="footer-placeholder"></div>
 
     <script src="components.js"></script>
 </body>
