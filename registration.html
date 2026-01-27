@@ -4,229 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration - Fairview Ultimate</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .navbar {
-            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
-            padding: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 10px 0;
-            text-decoration: none;
-            color: white;
-        }
-
-        .logo img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid white;
-        }
-
-        .logo span {
-            font-size: 1.3em;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 0;
-        }
-
-        .nav-links li a {
-            color: white;
-            text-decoration: none;
-            padding: 20px 20px;
-            display: block;
-            transition: background 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-links li a:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        .nav-links li {
-            position: relative;
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #7f1d1d;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            z-index: 1001;
-        }
-
-        .dropdown-content a {
-            padding: 12px 20px;
-            display: block;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .dropdown-content a:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown > a::after {
-            content: " ▾";
-            font-size: 0.8em;
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5em;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
-                flex-direction: column;
-                gap: 0;
-                display: none;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li a {
-                padding: 15px 20px;
-                border-top: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .dropdown-content {
-                position: static;
-                display: none;
-                background: #6b1a1a;
-                box-shadow: none;
-            }
-
-            .dropdown-content a {
-                padding-left: 40px;
-                font-size: 0.95em;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
-            color: white;
-            text-align: center;
-            padding: 80px 20px 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"/></svg>');
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.3em;
-            opacity: 0.95;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        .section {
-            margin-bottom: 60px;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .section h2 {
-            color: #b91c1c;
-            font-size: 2em;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #b91c1c;
-        }
-
-        .section p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-
         .form-container {
             margin-top: 30px;
         }
@@ -279,14 +58,6 @@
             display: block;
         }
 
-        .info-box {
-            background: #fef2f2;
-            border-left: 4px solid #b91c1c;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-
         .requirements-list {
             background: #f9fafb;
             padding: 25px;
@@ -307,73 +78,10 @@
         .requirements-list li {
             margin-bottom: 8px;
         }
-
-        .footer {
-            background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-        }
-
-        .footer-tagline {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .footer-subtitle {
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 25px;
-            transition: background 0.3s;
-        }
-
-        .social-link:hover {
-            background: rgba(255,255,255,0.2);
-        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="fairview-logo.png" alt="Fairview">
-                <span>FHS Ultimate</span>
-            </a>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="registration.html">Registration</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="program.html">Our Program</a></li>
-                <li class="dropdown">
-                    <a href="teams.html">Teams</a>
-                    <div class="dropdown-content">
-                        <a href="team-spring-girl-matching.html">Spring Girl-Matching</a>
-                        <a href="team-spring-a.html">Spring A</a>
-                        <a href="team-spring-b.html">Spring B</a>
-                        <a href="team-fall-a.html">Fall A</a>
-                        <a href="team-fall-b.html">Fall B</a>
-                        <a href="team-fall-open.html">Fall Open</a>
-                    </div>
-                </li>
-                <li><a href="schedule.html">Schedule</a></li>
-                <li><a href="spaghetti-western.html">Spaghetti Western</a></li>
-                <li><a href="alumni.html">Alumni</a></li>
-                <li><a href="shop.html">Shop</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div id="navigation-placeholder"></div>
 
     <div class="hero">
         <div class="hero-content">
@@ -415,7 +123,7 @@
             </div>
             
             <div class="info-box">
-                <strong>📝 Note:</strong> If you need to edit your registration after submitting, look for the confirmation email Google Forms sends you, or contact the coaching staff at <strong>fairviewultimatefrisbee@gmail.com<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bad9d5dbd9d2fadfd7dbd3d694d9d5d7">[email&#160;protected]</a></strong>
+                <strong>📝 Note:</strong> If you need to edit your registration after submitting, look for the confirmation email Google Forms sends you, or contact the coaching staff at <strong>fairviewultimatefrisbee@gmail.com</strong>
             </div>
         </div>
 
@@ -455,7 +163,7 @@
             </ol>
 
             <div class="info-box" style="margin-top: 25px;">
-                <strong>❓ Questions?</strong> Contact us at <strong>fairviewultimatefrisbee@gmail.com<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="06656967656e46636b676f6a2865696b">[email&#160;protected]</a></strong> or reach out on Instagram <a href="https://www.instagram.com/fhs.ultimate/" target="_blank" style="color: #b91c1c;">@fhs.ultimate</a>
+                <strong>❓ Questions?</strong> Contact us at <strong>fairviewultimatefrisbee@gmail.com</strong> or reach out on Instagram <a href="https://www.instagram.com/fhs.ultimate/" target="_blank" style="color: #b91c1c;">@fhs.ultimate</a>
             </div>
         </div>
     </div>
@@ -471,13 +179,6 @@
         </a>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-        }
-
-        // Mobile dropdown functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdown = document.querySelector('.dropdown > a');
-            if (dropdown && window.innerWidth <= 768) {
-                drop
+    <script src="components.js"></script>
+</body>
+</html>
